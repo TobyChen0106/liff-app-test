@@ -88,26 +88,26 @@ function toggleElement(elementId) {
 }
 
 formOnSubmit = () => {
-    if (document.getElementById('agree').checked) { 
+    if (document.getElementById('agree').checked) {
         liff.closeWindow();
-        return true; 
-    } 
-    else { 
-        alert('請閱讀並同意使用紙服務條款!'); 
+        return true;
+    }
+    else {
+        alert('請閱讀並同意使用紙服務條款!');
         return false;
     }
 }
 
 // slider
 var slider = new Slider(document.getElementById('slider'), 0, 100);
-slider.onChange = function(value) {
+slider.onChange = function (value) {
     document.getElementById('value').textContent = Math.round(value);
 };
 slider.setValue(25);
 
 function Slider(container, minValue, maxValue) {
     var slider = this;
-    
+
     ///////////
     //  DOM  //
     ///////////
@@ -115,35 +115,35 @@ function Slider(container, minValue, maxValue) {
     container.appendChild(slideGroup);
     slideGroup.style.position = 'relative';
     slideGroup.style.width =
-    slideGroup.style.height =
+        slideGroup.style.height =
         '100%';
-    
+
     var slideBar = document.createElement('div');
     slideGroup.appendChild(slideBar);
     slideBar.style.position = 'absolute';
     slideBar.style.left =
-    slideBar.style.right =
-    slideBar.style.top =
-    slideBar.style.bottom =
+        slideBar.style.right =
+        slideBar.style.top =
+        slideBar.style.bottom =
         Math.round(container.offsetHeight / 2 - 1) + 'px';
     slideBar.style.backgroundColor = 'black';
-    
+
     var slideButton = document.createElement('div');
     slideGroup.appendChild(slideButton);
     slideButton.style.position = 'absolute';
     slideButton.style.width =
-    slideButton.style.height =
-    slideButton.style.borderRadius =
+        slideButton.style.height =
+        slideButton.style.borderRadius =
         container.offsetHeight + 'px';
-    
+
     /////////////
     //  COLOR  //
     /////////////
-    var startColor = {r: 255, g: 0, b: 0};
-    var midColor = {r: 255, g: 255, b: 0};
-    var endColor = {r: 0, g: 255, b: 0};
-    
-    var colorAt = function(position) {
+    var startColor = { r: 255, g: 0, b: 0 };
+    var midColor = { r: 255, g: 255, b: 0 };
+    var endColor = { r: 0, g: 255, b: 0 };
+
+    var colorAt = function (position) {
         if (position <= .5) {
             var r = startColor.r * (.5 - position) * 2 + midColor.r * (position - 0) * 2;
             var g = startColor.g * (.5 - position) * 2 + midColor.g * (position - 0) * 2;
@@ -153,54 +153,60 @@ function Slider(container, minValue, maxValue) {
             var g = midColor.g * (1 - position) * 2 + endColor.g * (position - .5) * 2;
             var b = midColor.b * (1 - position) * 2 + endColor.b * (position - .5) * 2;
         }
-        return 'rgb('+Math.ceil(r)+', '+Math.ceil(g)+', '+Math.ceil(b)+')';
+        return 'rgb(' + Math.ceil(r) + ', ' + Math.ceil(g) + ', ' + Math.ceil(b) + ')';
     };
-    
+
     /////////////
     //  VALUE  //
     /////////////
     var value = null;
-    
-    slider.getValue = function() {
+
+    slider.getValue = function () {
         return value;
     };
-    
-    slider.setValue = function(newValue) {
+
+    slider.setValue = function (newValue) {
         value = Math.max(minValue, Math.min(maxValue, newValue));
         var position = (value - minValue) / (maxValue - minValue);
         slideButton.style.left = Math.round(position * slideBar.offsetWidth) + 'px';
         slideButton.style.backgroundColor = colorAt(position);
         if (slider.onChange) slider.onChange(value);
     };
-    
+
     slider.setValue(minValue);
-    
+
     /////////////
     //  MOUSE  //
     /////////////
     var sliding = false;
     var startX = 0;
-    
-    document.addEventListener('touchstart', function(event) {
-        if (event.target === slideButton) {
-            event.preventDefault();
-            sliding = true;
-            startX = event.pageX;
+
+    document.addEventListener('touchstart', function (event) {
+        var touches = event.touches;
+        if (touches.length === 1) {
+            if (touches[0].target === slideButton) {
+                event.preventDefault();
+                sliding = true;
+                startX = touches[0].pageX;
+            }
         }
-    });
-    
-    document.addEventListener('touchend', function(event) {
+    }, false);
+
+    document.addEventListener('touchend', function (event) {
         if (sliding) {
             sliding = false;
             startX = null;
         }
-    });
-    
-    document.addEventListener('touchmove', function(event) {
-        if (sliding) {
-            var newValue = value + ((event.pageX - startX) / slideBar.offsetWidth) * (maxValue - minValue);
-            startX = event.pageX;
-            slider.setValue(newValue);
+    }, false);
+
+    document.addEventListener('touchmove', function (event) {
+        var touches = event.touches;
+        if (touches.length === 1) {
+            if (sliding) {
+                var newValue = value + ((touches[0].pageX - startX) / slideBar.offsetWidth) * (maxValue - minValue);
+                startX = touches[0].pageX;
+                slider.setValue(newValue);
+            }
         }
-    });
+    }, false);
 }
