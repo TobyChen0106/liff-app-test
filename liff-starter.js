@@ -70,19 +70,15 @@ function initializeApp(data) {
     });
 }
 
-function sendWelcomeMessage() {
+sendWelcomeMessage = () => {
     liff.sendMessages([{
         type: 'text',
-        text: "歡迎你的加入!"
+        text: "我填完了!"
     }, {
         type: 'sticker',
         packageId: '2',
         stickerId: '144'
-    }]).then(function () {
-        window.alert("Message sent");
-    }).catch(function (error) {
-        window.alert("Error sending message: " + error);
-    });
+    }]);
 }
 
 function toggleAccessToken() {
