@@ -84,7 +84,9 @@ sendWelcomeMessage = () => {
         type: 'sticker',
         packageId: '2',
         stickerId: '144'
-    }]);
+    }]).catch(function (error) {
+        window.alert("Error sending message: " + error);
+    });
 }
 
 function toggleAccessToken() {
