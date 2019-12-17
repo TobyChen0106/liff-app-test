@@ -100,8 +100,8 @@ function toggleElement(elementId) {
 
 formOnSubmit = () => {
     if (document.getElementById('agree').checked) {
-        liff.closeWindow();
         sendWelcomeMessage();
+        liff.closeWindow();
         return true;
     }
     else {
