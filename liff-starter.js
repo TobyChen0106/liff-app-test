@@ -41,7 +41,6 @@ function initializeApp(data) {
     // });
     // show dosplay name
     liff.getProfile().then((profile) => {
-        document.getElementById('useridprofilefield').textContent = profile.userId;
         document.getElementById('info').textContent = profile.displayName + ", 我們要你的個資啦!";
     }).catch(function (error) {
         window.alert("Error getting profile: " + error);
