@@ -70,7 +70,7 @@ function initializeApp(data) {
     });
 }
 
-var sendWelcomeMessage = () => {
+sendWelcomeMessage = () => {
     liff.sendMessages([{
         type: 'text',
         text: "我填完囉!"
@@ -98,7 +98,7 @@ function toggleElement(elementId) {
     }
 }
 
-var formOnSubmit = () => {
+formOnSubmit = () => {
     if (document.getElementById('agree').checked) {
         liff.closeWindow();
         sendWelcomeMessage();
