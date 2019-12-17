@@ -25,10 +25,10 @@ function initializeApp(data) {
     });
 
     // sendMessages call
-    document.getElementById('sendmessagebutton').addEventListener('click', function () {
+    document.getElementById('submit-button').addEventListener('click', function () {
         liff.sendMessages([{
             type: 'text',
-            text: "歡迎你的加入!"
+            text: "我填完了!"
         }, {
             type: 'sticker',
             packageId: '2',
@@ -73,7 +73,7 @@ function initializeApp(data) {
 sendWelcomeMessage = () => {
     liff.sendMessages([{
         type: 'text',
-        text: "我填完了!"
+        text: "我填完囉!"
     }, {
         type: 'sticker',
         packageId: '2',
