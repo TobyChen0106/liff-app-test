@@ -181,7 +181,7 @@ function Slider(container, minValue, maxValue) {
     var sliding = false;
     var startX = 0;
     
-    document.addEventListener('mousedown', function(event) {
+    document.addEventListener('touchstart', function(event) {
         if (event.target === slideButton) {
             event.preventDefault();
             sliding = true;
@@ -189,14 +189,14 @@ function Slider(container, minValue, maxValue) {
         }
     });
     
-    document.addEventListener('mouseup', function(event) {
+    document.addEventListener('touchend', function(event) {
         if (sliding) {
             sliding = false;
             startX = null;
         }
     });
     
-    document.addEventListener('mousemove', function(event) {
+    document.addEventListener('touchmove', function(event) {
         if (sliding) {
             var newValue = value + ((event.pageX - startX) / slideBar.offsetWidth) * (maxValue - minValue);
             startX = event.pageX;
