@@ -109,7 +109,7 @@ function toggleElement(elementId) {
 formOnSubmit = () => {
     if (document.getElementById('agree').checked) {
         sendWelcomeMessage();
-        liff.closeWindow();
+        // liff.closeWindow();
         return true;
     }
     else {
