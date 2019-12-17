@@ -1,19 +1,63 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIFF Starter</title>
+    <title>Cardbo Register</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
-    <div class="buttongroup">
+    <div id="cardbo-register-data" class="row">
+        <h2>會員註冊說明</h2>
+        <div class="info">我們94要你的個資la</div>
+    </div>
+
+
+    <form action="#" onsubmit="formOnSubmit()" id="register-form">
+        <div class="row">
+            <div>暱稱</div>
+            <input type="text" name="text" value="" id="name" />
+        </div>
+        <div class="row">
+            <div>年齡</div>
+            <div id="slider" style="display: inline-block; width: 90%;
+                height:20px;"></div>
+            <div id="value" style="display: inline-block;"></div>
+        </div>
+        <div class="row">
+            <div>性別</div>
+            <input type="radio" name="gender" value="male" checked> Male<br>
+            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="radio" name="gender" value="other"> Other
+        </div>
+        <div class="row">
+            <div>已擁有信用卡</div>
+            <input type="text" name="text" value="" id="" />
+        </div>
+        <div class="row">
+            <input type="checkbox" name="checkbox" value="check" id="agree" />
+            我已閱讀並同意<a href="#">使用者服務條款</a>
+        </div>
+        <div class="row">
+            <input type="submit" name="submit" value="submit" id="submit-button"
+                />
+        </div>
+    </form>
+
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script src="liff-starter.js"></script>
+</body>
+
+
+
+<!-- <div class="buttongroup">
         <div class="buttonrow">
-            <button id="openwindowbutton">Open Window</button>
-            <button id="closewindowbutton">Close Window</button>
+            <button id="openwindowbutton">Open </button>
+            <button id="closewindowbutton">Close </button>
         </div>
         <div class="buttonrow">
-            <button id="getaccesstoken">Get Access Token</button>
-            <button id="getprofilebutton">Get Profile</button>
-            <button id="sendmessagebutton">Send Message</button>
+            <button id="getaccesstoken">Get </button>
+            <button id="getprofilebutton">Get </button>
+            <button id="sendmessagebutton">Send </button>
         </div>
     </div>
 
@@ -26,9 +70,8 @@
                 <td id="accesstokenfield"></td>
             </tr>
         </table>
-    </div>
-
-    <div id="profileinfo">
+    </div> -->
+<!-- <div id="profileinfo">
         <h2>Profile</h2>
         <a href="#" onclick="toggleProfileData()">Close Profile</a>
         <div id="profilepicturediv">
@@ -47,38 +90,4 @@
                 <td id="statusmessagefield"></td>
             </tr>
         </table>
-    </div>
-
-    <div id="liffdata">
-        <h2>LIFF Data</h2>
-        <table border="1">
-            <tr>
-                <th>language</th>
-                <td id="languagefield"></td>
-            </tr>
-            <tr>
-                <th>context.viewType</th>
-                <td id="viewtypefield"></td>
-            </tr>
-            <tr>
-                <th>context.userId</th>
-                <td id="useridfield"></td>
-            </tr>
-            <tr>
-                <th>context.utouId</th>
-                <td id="utouidfield"></td>
-            </tr>
-            <tr>
-                <th>context.roomId</th>
-                <td id="roomidfield"></td>
-            </tr>
-            <tr>
-                <th>context.groupId</th>
-                <td id="groupidfield"></td>
-            </tr>
-        </table>
-    </div>
-    
-    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
-    <script src="liff-starter.js"></script>
-</body>
+    </div> -->

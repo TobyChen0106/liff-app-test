@@ -9,7 +9,7 @@ table {
     word-break: break-all;
 }
 
-.div {
+.row {
     max-width: 100%;
     text-align: center;
 }
@@ -43,3 +43,28 @@ img {
 button {
     margin: 4px;
 }
+
+#register-form{
+    margin: 10px;
+}
+
+/* Color Theme Swatches in Hex */
+.color-1-hex { color: #23260D; }
+.color-2-hex { color: #F2B705; }
+.color-3-hex { color: #F29F05; }
+.color-4-hex { color: #F2EBDF; }
+.color-5-hex { color: #F28705; }
+
+/* Color Theme Swatches in RGBA */
+.color-1-rgba { color: rgba(35, 38, 13, 1); }
+.color-2-rgba { color: rgba(242, 182, 4, 1); }
+.color-3-rgba { color: rgba(242, 159, 4, 1); }
+.color-4-rgba { color: rgba(242, 235, 222, 1); }
+.color-5-rgba { color: rgba(242, 135, 4, 1); }
+
+/* Color Theme Swatches in HSLA */
+.color-1-hsla { color: hsla(67, 49, 10, 1); }
+.color-2-hsla { color: hsla(45, 96, 48, 1); }
+.color-3-hsla { color: hsla(39, 96, 48, 1); }
+.color-4-hsla { color: hsla(39, 43, 91, 1); }
+.color-5-hsla { color: hsla(33, 96, 48, 1); }
