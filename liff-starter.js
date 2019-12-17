@@ -39,35 +39,40 @@ function initializeApp(data) {
     //         window.alert("Error sending message: " + error);
     //     });
     // });
+    // show dosplay name
+    liff.getProfile().then( (profile) =>{
+        document.getElementById('useridprofilefield').textContent = profile.userId;
+        document.getElementById('info').textContent = profile.displayName+", "+document.getElementById('displaynamefield').textContent;
+    })
 
-    // get access token
-    document.getElementById('getaccesstoken').addEventListener('click', function () {
-        const accessToken = liff.getAccessToken();
-        document.getElementById('accesstokenfield').textContent = accessToken;
-        toggleAccessToken();
+// get access token
+document.getElementById('getaccesstoken').addEventListener('click', function () {
+    const accessToken = liff.getAccessToken();
+    document.getElementById('accesstokenfield').textContent = accessToken;
+    toggleAccessToken();
+});
+
+// get profile call
+document.getElementById('getprofilebutton').addEventListener('click', function () {
+    liff.getProfile().then(function (profile) {
+        document.getElementById('useridprofilefield').textContent = profile.userId;
+        document.getElementById('displaynamefield').textContent = profile.displayName;
+
+        const profilePictureDiv = document.getElementById('profilepicturediv');
+        if (profilePictureDiv.firstElementChild) {
+            profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+        }
+        const img = document.createElement('img');
+        img.src = profile.pictureUrl;
+        img.alt = "Profile Picture";
+        profilePictureDiv.appendChild(img);
+
+        document.getElementById('statusmessagefield').textContent = profile.statusMessage;
+        toggleProfileData();
+    }).catch(function (error) {
+        window.alert("Error getting profile: " + error);
     });
-
-    // get profile call
-    document.getElementById('getprofilebutton').addEventListener('click', function () {
-        liff.getProfile().then(function (profile) {
-            document.getElementById('useridprofilefield').textContent = profile.userId;
-            document.getElementById('displaynamefield').textContent = profile.displayName;
-
-            const profilePictureDiv = document.getElementById('profilepicturediv');
-            if (profilePictureDiv.firstElementChild) {
-                profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-            }
-            const img = document.createElement('img');
-            img.src = profile.pictureUrl;
-            img.alt = "Profile Picture";
-            profilePictureDiv.appendChild(img);
-
-            document.getElementById('statusmessagefield').textContent = profile.statusMessage;
-            toggleProfileData();
-        }).catch(function (error) {
-            window.alert("Error getting profile: " + error);
-        });
-    });
+});
 }
 
 sendWelcomeMessage = () => {
