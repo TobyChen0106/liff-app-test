@@ -93,7 +93,7 @@ formOnSubmit = () => {
         return true;
     }
     else {
-        alert('請閱讀並同意使用紙服務條款!');
+        alert('請閱讀並同意使用者服務條款!');
         return false;
     }
 }
