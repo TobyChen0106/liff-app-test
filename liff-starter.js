@@ -28,7 +28,7 @@ function initializeApp(data) {
     document.getElementById('sendmessagebutton').addEventListener('click', function () {
         liff.sendMessages([{
             type: 'text',
-            text: "You've successfully sent a message! Hooray!"
+            text: "歡迎你的加入!"
         }, {
             type: 'sticker',
             packageId: '2',
@@ -70,6 +70,21 @@ function initializeApp(data) {
     });
 }
 
+function sendWelcomeMessage() {
+    liff.sendMessages([{
+        type: 'text',
+        text: "歡迎你的加入!"
+    }, {
+        type: 'sticker',
+        packageId: '2',
+        stickerId: '144'
+    }]).then(function () {
+        window.alert("Message sent");
+    }).catch(function (error) {
+        window.alert("Error sending message: " + error);
+    });
+}
+
 function toggleAccessToken() {
     toggleElement('accesstokendata');
 }
@@ -90,6 +105,7 @@ function toggleElement(elementId) {
 formOnSubmit = () => {
     if (document.getElementById('agree').checked) {
         liff.closeWindow();
+        sendWelcomeMessage();
         return true;
     }
     else {
