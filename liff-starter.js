@@ -13,32 +13,32 @@ function initializeApp(data) {
     // document.getElementById('groupidfield').textContent = data.context.groupId;
 
     // openWindow call
-    document.getElementById('openwindowbutton').addEventListener('click', function () {
-        liff.openWindow({
-            url: 'https://line.me'
-        });
-    });
+    // document.getElementById('openwindowbutton').addEventListener('click', function () {
+    //     liff.openWindow({
+    //         url: 'https://line.me'
+    //     });
+    // });
 
-    // closeWindow call
-    document.getElementById('closewindowbutton').addEventListener('click', function () {
-        liff.closeWindow();
-    });
+    // // closeWindow call
+    // document.getElementById('closewindowbutton').addEventListener('click', function () {
+    //     liff.closeWindow();
+    // });
 
-    // sendMessages call
-    document.getElementById('submit-button').addEventListener('click', function () {
-        liff.sendMessages([{
-            type: 'text',
-            text: "我填完了!"
-        }, {
-            type: 'sticker',
-            packageId: '2',
-            stickerId: '144'
-        }]).then(function () {
-            window.alert("Message sent");
-        }).catch(function (error) {
-            window.alert("Error sending message: " + error);
-        });
-    });
+    // // sendMessages call
+    // document.getElementById('submit-button').addEventListener('click', function () {
+    //     liff.sendMessages([{
+    //         type: 'text',
+    //         text: "我填完了!"
+    //     }, {
+    //         type: 'sticker',
+    //         packageId: '2',
+    //         stickerId: '144'
+    //     }]).then(function () {
+    //         window.alert("Message sent");
+    //     }).catch(function (error) {
+    //         window.alert("Error sending message: " + error);
+    //     });
+    // });
 
     // get access token
     document.getElementById('getaccesstoken').addEventListener('click', function () {
