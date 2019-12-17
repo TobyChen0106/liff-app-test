@@ -108,8 +108,19 @@ function toggleElement(elementId) {
 
 formOnSubmit = () => {
     if (document.getElementById('agree').checked) {
-        sendWelcomeMessage();
-        // liff.closeWindow();
+        liff.sendMessages([{
+            type: 'text',
+            text: "我填完囉!"
+        }, {
+            type: 'sticker',
+            packageId: '2',
+            stickerId: '144'
+        }]).catch(function (error) {
+            window.alert("Error sending message: " + error);
+        }).then( () => {
+            liff.closeWindow();
+        })
+
         return true;
     }
     else {
